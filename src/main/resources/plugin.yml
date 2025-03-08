@@ -1,0 +1,10 @@
+name: LBanking
+version: '1.0'
+main: com.karpen.lBanking.LBanking
+api-version: '1.21'
+
+commands:
+  bank:
+    usage: "/bank help"
+  bank-staff:
+    usage: "/bank-staff help"
