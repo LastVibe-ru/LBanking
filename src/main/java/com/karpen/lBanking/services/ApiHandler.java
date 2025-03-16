@@ -42,7 +42,7 @@ public class ApiHandler implements HttpHandler {
                         sum = pair.length > 1 ? Integer.parseInt(pair[1]) : null;
                     } catch (NumberFormatException e) {
                         status = 400;
-                        response = "Wrong sum.";
+                        response = "Wrong sum";
                     }
                 }
             }
@@ -54,7 +54,7 @@ public class ApiHandler implements HttpHandler {
                     response = "Done";
                     status = 200;
                 } else {
-                    response = "Err";
+                    response = "Error";
                     status = 502;
                 }
             } else if (uri.getPath().equals("/api/rem") && name != null && sum != null){
@@ -64,7 +64,7 @@ public class ApiHandler implements HttpHandler {
                     response = "Done";
                     status = 200;
                 } else {
-                    response = "Err";
+                    response = "Error";
                     status = 502;
                 }
             } else if (uri.getPath().equals("/api/get") && name != null){
@@ -73,7 +73,7 @@ public class ApiHandler implements HttpHandler {
                 if (user != null){
                     status = 200;
 
-                    response = "User " + user.getName() + " balance " + user.getBalance();
+                    response = user.getName() + " " + user.getBalance();
                 } else {
                     status = 400;
                     response = "User " + name + " not found";

@@ -51,7 +51,7 @@ public class BankCommands implements CommandExecutor {
 
         try {
             int amount = Integer.parseInt(strings[2]);
-            player.sendMessage(ChatColor.DARK_AQUA + "Вы успешно перевели " + amount + " игроку " + strings[1]);
+            //player.sendMessage(ChatColor.DARK_AQUA + "Вы успешно перевели " + amount + " игроку " + strings[1]);
             return service.sendPay(player, strings[1].toLowerCase(), amount);
         } catch (NumberFormatException e) {
             player.sendMessage(ChatColor.RED + "Введите корректную сумму для отправки.");

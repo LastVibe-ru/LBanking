@@ -44,16 +44,30 @@ public class CommandService {
     public boolean sendPay(Player player, String targetName, int sum){
         service.loadUsers();
 
+        if (service.getUser(targetName) == null){
+            player.sendMessage(ChatColor.RED + "Игрока " + targetName + " не существует.");
+
+            return true;
+        }
+
         service.balancePlus(targetName, sum);
         service.balanceMinus(player.getName(), sum);
 
         service.saveUsers();
+
+        player.sendMessage(ChatColor.DARK_AQUA + "Вы перевели игроку " + targetName + " " + sum + " ар.");
 
         return true;
     }
 
     public boolean getPlayerBal(Player player, Player source){
         service.loadUsers();
+
+        if (service.getUser(player.getName()) == null){
+            source.sendMessage(ChatColor.RED + "Игрок не найден");
+
+            return true;
+        }
 
         source.sendMessage(ChatColor.DARK_AQUA + "Баланс игрока " + player.getName() + " " + service.getUser(player.getName()).getBalance());
 
@@ -63,7 +77,7 @@ public class CommandService {
     public boolean addPlayerBal(Player player, int sum){
         service.loadUsers();
 
-        service.getUser(player.getName()).setBalance(service.getUser(player.getName()).getBalance() + sum);
+        service.balancePlus(player.getName(), sum);
 
         service.saveUsers();
 
@@ -73,7 +87,7 @@ public class CommandService {
     public boolean remPlayerBal(Player player, int sum){
         service.loadUsers();
 
-        service.getUser(player.getName()).setBalance(service.getUser(player.getName()).getBalance() - sum);
+        service.balanceMinus(player.getName(), sum);
 
         service.saveUsers();
 
