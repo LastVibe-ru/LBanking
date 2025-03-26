@@ -1,10 +1,16 @@
 name: LBanking
-version: '1.1'
+version: '1.2'
 main: com.karpen.lBanking.LBanking
 api-version: '1.21'
 
 commands:
   bank:
     usage: "/bank help"
+    description: Совершайте банковские переводы
+    permission: karpen.lbanking.bank
+    permission-message: У вас недостаточно прав
   bank-staff:
     usage: "/bank-staff help"
+    description: Команда для банкира
+    permission: karpen.lbanking.staff
+    permission-message: У вас недостаточно прав
